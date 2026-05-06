@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProLine Reception | AI Call Answering for Local Service Businesses</title>
+  <meta name="description" content="ProLine Reception answers calls 24/7, captures lead details, notifies your team, and helps turn missed calls into booked opportunities." />
+  <style>
+    :root {
+      --bg: #070b12;
+      --bg-2: #0b1220;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-2: rgba(255, 255, 255, 0.09);
+      --text: #f8fafc;
+      --muted: #a8b3c7;
+      --muted-2: #758299;
+      --line: rgba(255, 255, 255, 0.12);
+      --blue: #38bdf8;
+      --blue-2: #2563eb;
+      --green: #22c55e;
+      --red: #fb7185;
+      --gold: #fbbf24;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 32rem),
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.20), transparent 34rem),
+        linear-gradient(180deg, #050914 0%, #07101e 48%, #060a12 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 9, 20, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.1rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 14px 34px rgba(56, 189, 248, 0.25);
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: 0.2s ease;
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      color: white;
+      box-shadow: 0 18px 36px rgba(37, 99, 235, 0.32);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 44px rgba(37, 99, 235, 0.44);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 1.15rem;
+    }
+
+    .hero {
+      padding: 92px 0 64px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #c7e9ff;
+      background: rgba(56, 189, 248, 0.11);
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      padding: 9px 13px;
+      border-radius: 999px;
+      font-weight: 750;
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.13);
+    }
+
+    h1 {
+      font-size: clamp(3.05rem, 7vw, 5.95rem);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #bfeeff 42%, #69b7ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.18rem;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 640px;
+    }
+
+    .trust-item {
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .trust-item span {
+      display: block;
+      color: var(--muted-2);
+      font-size: 0.84rem;
+      margin-top: 2px;
+    }
+
+    .dashboard-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.045));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 32px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(circle at 70% 0%, rgba(56, 189, 248, 0.18), transparent 32rem);
+      pointer-events: none;
+    }
+
+    .mock-window {
+      position: relative;
+      border-radius: 24px;
+      background: rgba(2, 6, 23, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+    }
+
+    .mock-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.24);
+    }
+
+    .status-pill {
+      color: #bbf7d0;
+      background: rgba(34, 197, 94, 0.11);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .call-panel {
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .incoming {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 17px;
+      border-radius: 18px;
+      background: rgba(56, 189, 248, 0.095);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+    }
+
+    .phone-ring {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--green), #16a34a);
+      font-size: 1.35rem;
+      animation: ring 1.5s infinite;
+    }
+
+    @keyframes ring {
+      0%, 100% { transform: rotate(0deg); }
+      10%, 30% { transform: rotate(-8deg); }
+      20%, 40% { transform: rotate(8deg); }
+      50% { transform: rotate(0deg); }
+    }
+
+    .incoming h3 {
+      font-size: 1.03rem;
+      margin-bottom: 3px;
+    }
+
+    .incoming span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .data-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 15px;
+    }
+
+    .data-box span {
+      color: var(--muted-2);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+
+    .data-box strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.98rem;
+    }
+
+    .summary-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .summary-box span {
+      color: var(--muted-2);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+
+    .summary-box p {
+      color: var(--text);
+      margin: 6px 0 0;
+      font-size: 0.94rem;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      color: var(--blue);
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(2.1rem, 4.5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      margin-bottom: 16px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      background: rgba(56, 189, 248, 0.11);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      font-size: 1.35rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      counter-reset: flow;
+    }
+
+    .flow-step {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 220px;
+    }
+
+    .flow-step::before {
+      counter-increment: flow;
+      content: "0" counter(flow);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      font-weight: 900;
+      margin-bottom: 26px;
+    }
+
+    .features-wrap {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .feature-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.13);
+      color: #86efac;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .feature-item span {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .visual-card {
+      min-height: 100%;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.16), transparent 22rem),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .pipeline {
+      display: grid;
+      gap: 13px;
+      margin-top: 18px;
+    }
+
+    .pipeline-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: rgba(2, 6, 23, 0.66);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .pipeline-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #334155, #0f172a);
+      display: grid;
+      place-items: center;
+      font-weight: 850;
+    }
+
+    .pipeline-row small {
+      color: var(--muted-2);
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.75rem;
+      font-weight: 850;
+      border: 1px solid var(--line);
+      color: #dbeafe;
+      background: rgba(37, 99, 235, 0.14);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 500px;
+    }
+
+    .price-card.featured {
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.13), rgba(255, 255, 255, 0.055));
+      border-color: rgba(56, 189, 248, 0.38);
+      box-shadow: 0 30px 80px rgba(37, 99, 235, 0.18);
+      transform: translateY(-12px);
+    }
+
+    .badge {
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      background: rgba(251, 191, 36, 0.13);
+      color: #fde68a;
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 850;
+    }
+
+    .price-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .price-card p {
+      color: var(--muted);
+      min-height: 54px;
+    }
+
+    .price {
+      margin: 24px 0 8px;
+      font-size: 3rem;
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 900;
+    }
+
+    .price span {
+      color: var(--muted-2);
+      font-size: 1rem;
+      letter-spacing: 0;
+      font-weight: 650;
+    }
+
+    .price-list {
+      margin: 24px 0;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      list-style: none;
+      flex: 1;
+    }
+
+    .price-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .setup-box {
+      margin-top: 26px;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      background: rgba(56, 189, 248, 0.075);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .setup-box p {
+      color: var(--muted);
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 12px;
+      max-width: 900px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: transparent;
+      color: var(--text);
+      border: 0;
+      padding: 20px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+      color: var(--muted);
+      padding: 0 20px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 220px;
+      padding: 0 20px 20px;
+    }
+
+    .faq-plus {
+      color: var(--blue);
+      font-size: 1.3rem;
+      transition: 0.2s ease;
+    }
+
+    .faq-item.active .faq-plus {
+      transform: rotate(45deg);
+    }
+
+    .cta {
+      padding: 96px 0;
+    }
+
+    .cta-box {
+      position: relative;
+      border-radius: 34px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      background:
+        radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.24), transparent 28rem),
+        linear-gradient(135deg, rgba(255,255,255,0.11), rgba(255,255,255,0.045));
+      padding: clamp(34px, 7vw, 72px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      max-width: 760px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+    }
+
+    .form-card {
+      margin-top: 32px;
+      background: rgba(2, 6, 23, 0.58);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: 760px;
+    }
+
+    .form-card input,
+    .form-card textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 14px 15px;
+      font: inherit;
+      outline: none;
+    }
+
+    .form-card input:focus,
+    .form-card textarea:focus {
+      border-color: rgba(56, 189, 248, 0.55);
+    }
+
+    .form-card textarea {
+      grid-column: 1 / -1;
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .form-card button {
+      justify-self: start;
+    }
+
+    .form-note {
+      align-self: center;
+      color: var(--muted-2);
+      font-size: 0.86rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+      color: var(--muted-2);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .features-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-grid,
+      .flow,
+      .pricing-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+      }
+
+      .mobile-menu.open {
+        display: grid;
+      }
+    }
+
+    .mobile-menu {
+      display: none;
+      gap: 8px;
+      padding: 0 0 18px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .hero {
+        padding: 58px 0 42px;
+      }
+
+      section {
+        padding: 62px 0;
+      }
+
+      .problem-grid,
+      .flow,
+      .pricing-grid,
+      .trust-row,
+      .data-grid,
+      .form-card {
+        grid-template-columns: 1fr;
+      }
+
+      .setup-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .incoming {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#top" class="brand" aria-label="ProLine Reception home">
+          <span class="brand-mark">PR</span>
+          <span>ProLine Reception</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#problem">Problem</a>
+          <a href="#how">How It Works</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="#demo">See Demo</a>
+          <a class="btn btn-primary" href="#contact">Book Setup Call</a>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+      </div>
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="#problem">Problem</a>
+        <a href="#how">How It Works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Book Setup Call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="pulse"></span> 24/7 AI call answering for service businesses</div>
+          <h1>Your business phone should never send money to voicemail.</h1>
+          <p>
+            ProLine Reception answers incoming calls, captures lead details, logs the opportunity, notifies your team, and sends the caller a booking link so serious inquiries do not disappear after hours, during busy jobs, or when your staff cannot pick up.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Get My System Built</a>
+            <a class="btn btn-secondary" href="#demo">Watch How It Works</a>
+          </div>
+          <div class="trust-row">
+            <div class="trust-item">
+              <strong>24/7</strong>
+              <span>Call coverage</span>
+            </div>
+            <div class="trust-item">
+              <strong>Instant</strong>
+              <span>Owner alerts</span>
+            </div>
+            <div class="trust-item">
+              <strong>Automated</strong>
+              <span>Lead follow-up</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-card reveal" id="demo">
+          <div class="mock-window">
+            <div class="mock-top">
+              <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <span class="status-pill">AI ONLINE</span>
+            </div>
+            <div class="call-panel">
+              <div class="incoming">
+                <div class="pipeline-left">
+                  <div class="phone-ring">☎</div>
+                  <div>
+                    <h3>Incoming Call Captured</h3>
+                    <span>After-hours plumbing lead</span>
+                  </div>
+                </div>
+                <span class="tag">New AI Lead</span>
+              </div>
+
+              <div class="data-grid">
+                <div class="data-box">
+                  <span>Name</span>
+                  <strong>Michael Carter</strong>
+                </div>
+                <div class="data-box">
+                  <span>Phone</span>
+                  <strong>(404) 555-0198</strong>
+                </div>
+                <div class="data-box">
+                  <span>Service</span>
+                  <strong>Water heater issue</strong>
+                </div>
+                <div class="data-box">
+                  <span>Urgency</span>
+                  <strong>Today</strong>
+                </div>
+              </div>
+
+              <div class="summary-box">
+                <span>Call Summary</span>
+                <p>Caller needs help with a leaking water heater and requested the earliest available appointment. Booking link sent and owner notified.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">The hidden leak</div>
+          <h2>Missed calls do not look expensive until you count the jobs behind them.</h2>
+          <p>Most local service businesses are already paying to make the phone ring. The problem is what happens when the call comes in at the wrong time.</p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="card reveal">
+            <div class="icon">📞</div>
+            <h3>Calls get missed</h3>
+            <p>Customers call while your team is on a job, driving, with another customer, or closed for the day.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon">💸</div>
+            <h3>Leads go cold</h3>
+            <p>When a caller reaches voicemail, many do not wait. They call the next company that answers.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon">🧾</div>
+            <h3>Follow-up gets messy</h3>
+            <p>Notes get missed, names are forgotten, and serious leads fall through because there is no clean capture system.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">How it works</div>
+          <h2>From incoming call to organized lead without adding staff.</h2>
+          <p>ProLine Reception connects to your existing business phone flow and turns calls into structured opportunities your team can act on.</p>
+        </div>
+
+        <div class="flow">
+          <article class="flow-step reveal">
+            <h3>Caller reaches your business</h3>
+            <p>Your existing business number forwards unanswered or selected calls to your AI receptionist.</p>
+          </article>
+          <article class="flow-step reveal">
+            <h3>AI answers professionally</h3>
+            <p>The caller is greeted, asked clear questions, and guided through the call like a trained front desk assistant.</p>
+          </article>
+          <article class="flow-step reveal">
+            <h3>Lead details are captured</h3>
+            <p>Name, phone, email, service type, urgency, and call summary are organized automatically.</p>
+          </article>
+          <article class="flow-step reveal">
+            <h3>Your team gets notified</h3>
+            <p>The owner receives the call details, the lead is logged, and booking/follow-up can begin immediately.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container features-wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">What is included</div>
+          <h2>A complete call capture system, not just a talking bot.</h2>
+          <p>The AI receptionist is only one part of the system. The real value is what happens after the call.</p>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature-item reveal">
+            <span class="check">✓</span>
+            <div><strong>Human-like AI call answering</strong><span>Professional call handling for common service business inquiries.</span></div>
+          </div>
+          <div class="feature-item reveal">
+            <span class="check">✓</span>
+            <div><strong>Lead capture and CRM logging</strong><span>Caller details are saved automatically so the opportunity is not lost.</span></div>
+          </div>
+          <div class="feature-item reveal">
+            <span class="check">✓</span>
+            <div><strong>Owner notifications</strong><span>Get the lead summary sent to the right person quickly.</span></div>
+          </div>
+          <div class="feature-item reveal">
+            <span class="check">✓</span>
+            <div><strong>Booking link delivery</strong><span>Send callers a clear next step instead of leaving them waiting.</span></div>
+          </div>
+          <div class="feature-item reveal">
+            <span class="check">✓</span>
+            <div><strong>Emergency transfer rules</strong><span>Urgent callers can be routed to the designated emergency contact.</span></div>
+          </div>
+          <div class="feature-item reveal">
+            <span class="check">✓</span>
+            <div><strong>Follow-up automation</strong><span>Unbooked leads can receive reminders so interest does not die after one call.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container features-wrap">
+        <div class="visual-card reveal">
+          <div class="section-kicker">Inside the system</div>
+          <h2>Every call becomes a trackable opportunity.</h2>
+          <p style="color: var(--muted); max-width: 620px;">Your business does not just get a phone answerer. It gets a clean process for seeing who called, what they need, how urgent it is, and what should happen next.</p>
+          <div class="pipeline">
+            <div class="pipeline-row">
+              <div class="pipeline-left"><div class="avatar">MC</div><div><strong>Michael Carter</strong><br><small>Water heater leak</small></div></div>
+              <span class="tag">Today</span>
+            </div>
+            <div class="pipeline-row">
+              <div class="pipeline-left"><div class="avatar">LS</div><div><strong>Lauren Smith</strong><br><small>Estimate request</small></div></div>
+              <span class="tag">Booked</span>
+            </div>
+            <div class="pipeline-row">
+              <div class="pipeline-left"><div class="avatar">DJ</div><div><strong>David Johnson</strong><br><small>Emergency repair</small></div></div>
+              <span class="tag" style="color:#fecdd3;background:rgba(251,113,133,.14);border-color:rgba(251,113,133,.24)">Urgent</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon">⚙️</div>
+          <h3>Built for local service businesses</h3>
+          <p>Plumbers, HVAC companies, roofers, electricians, landscapers, cleaners, pest control companies, and other businesses where every missed call can represent real revenue.</p>
+          <br>
+          <p>We configure the receptionist around your services, your emergency rules, your booking process, and your preferred owner notification method.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Pricing</div>
+          <h2>Simple monthly plans based on AI call minutes.</h2>
+          <p>Choose the plan that matches your expected call volume. Plans can be adjusted as usage grows.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <h3>Starter</h3>
+            <p>For smaller service businesses that want basic 24/7 call coverage.</p>
+            <div class="price">$297<span>/mo</span></div>
+            <ul class="price-list">
+              <li><span class="check">✓</span> Up to 300 AI minutes</li>
+              <li><span class="check">✓</span> AI call answering</li>
+              <li><span class="check">✓</span> Lead capture</li>
+              <li><span class="check">✓</span> Owner email notifications</li>
+              <li><span class="check">✓</span> Booking link delivery</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contact">Start Here</a>
+          </article>
+
+          <article class="price-card featured reveal">
+            <div class="badge">Most Popular</div>
+            <h3>Growth</h3>
+            <p>For businesses with steady inbound calls and active lead follow-up needs.</p>
+            <div class="price">$397<span>/mo</span></div>
+            <ul class="price-list">
+              <li><span class="check">✓</span> Up to 500 AI minutes</li>
+              <li><span class="check">✓</span> Everything in Starter</li>
+              <li><span class="check">✓</span> Follow-up automation</li>
+              <li><span class="check">✓</span> Emergency routing rules</li>
+              <li><span class="check">✓</span> Priority support</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Choose Growth</a>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Scale</h3>
+            <p>For higher-volume teams that need more coverage and room to grow.</p>
+            <div class="price">$597<span>/mo</span></div>
+            <ul class="price-list">
+              <li><span class="check">✓</span> Up to 1,000 AI minutes</li>
+              <li><span class="check">✓</span> Everything in Growth</li>
+              <li><span class="check">✓</span> Higher usage capacity</li>
+              <li><span class="check">✓</span> Advanced call handling tweaks</li>
+              <li><span class="check">✓</span> Monthly optimization review</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contact">Scale Coverage</a>
+          </article>
+        </div>
+
+        <div class="setup-box reveal">
+          <div>
+            <h3>One-time installation fee</h3>
+            <p>Includes system setup, AI receptionist configuration, CRM workflow setup, booking setup, testing, and launch support.</p>
+          </div>
+          <div style="font-size:2.1rem;font-weight:900;letter-spacing:-.05em;white-space:nowrap;">$499+</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">FAQ</div>
+          <h2>Questions business owners ask before trusting AI with their calls.</h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item reveal active">
+            <button class="faq-question">Does this replace my staff?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">No. ProLine Reception is designed to capture calls your team misses, support after-hours coverage, and organize inbound leads. It can work alongside your existing staff.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question">Will it sound robotic?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">The system uses advanced conversational AI designed to sound natural, professional, and calm. The call flow is configured around your business so it does not feel generic.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question">Can it handle emergencies?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">Yes. Emergency logic can be configured so urgent callers are flagged and routed to the right person based on your rules.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question">Do I need to change my business number?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">No. The system can work with call forwarding from your existing business number, so customers can keep calling the number they already know.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question">What happens after the call?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">The system logs the lead, creates an opportunity, stores the call summary, notifies your team, and can send booking/follow-up messages depending on your setup.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div class="section-kicker">Ready to stop leaking calls?</div>
+          <h2>Get a professional AI call capture system built for your business.</h2>
+          <p>Send your information below and we will review your call flow, services, and setup needs. Replace this form action with your Google Form, GoHighLevel form, or CRM embed when ready.</p>
+
+          <form class="form-card" onsubmit="handleForm(event)">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="business" placeholder="Business name" required>
+            <input type="email" name="email" placeholder="Email address" required>
+            <input type="tel" name="phone" placeholder="Phone number" required>
+            <textarea name="message" placeholder="What type of business do you run, and how are calls currently handled?"></textarea>
+            <button class="btn btn-primary" type="submit">Request Setup Call</button>
+            <span class="form-note">This demo form opens your email app. Connect it to GHL or Google Forms before going live.</span>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <span class="brand-mark">PR</span>
+        <span>ProLine Reception</span>
+      </div>
+      <div class="footer-links">
+        <a href="#how">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <span>© <span id="year"></span> ProLine Reception. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        item.classList.toggle('active');
+      });
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function handleForm(event) {
+      event.preventDefault();
+      const form = event.target;
+      const data = new FormData(form);
+      const subject = encodeURIComponent('ProLine Reception Setup Call Request');
+      const body = encodeURIComponent(
+        `Name: ${data.get('name')}\n` +
+        `Business: ${data.get('business')}\n` +
+        `Email: ${data.get('email')}\n` +
+        `Phone: ${data.get('phone')}\n\n` +
+        `Message:\n${data.get('message') || ''}`
+      );
+      window.location.href = `mailto:notifications@ai-bos.org?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>

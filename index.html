@@ -81,21 +81,21 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       font-weight: 800;
       letter-spacing: -0.03em;
       font-size: 1.1rem;
     }
 
+    .brand-logo {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
     .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-2));
-      display: grid;
-      place-items: center;
-      box-shadow: 0 14px 34px rgba(56, 189, 248, 0.25);
-      font-weight: 900;
+      display: none;
     }
 
     .nav-links {
@@ -912,6 +912,10 @@
         display: none;
       }
 
+      .brand-logo {
+        height: 46px;
+      }
+
       .mobile-toggle {
         display: inline-flex;
       }
@@ -936,6 +940,10 @@
     @media (max-width: 720px) {
       .container {
         width: min(100% - 28px, var(--max));
+      }
+
+      .brand-logo {
+        height: 42px;
       }
 
       .hero {
@@ -981,8 +989,7 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#top" class="brand" aria-label="ProLine Reception home">
-          <span class="brand-mark">PR</span>
-          <span>ProLine Reception</span>
+          <img src="logo.png" alt="ProLine Reception Logo" class="brand-logo">
         </a>
 
         <nav class="nav-links" aria-label="Primary navigation">
@@ -1353,8 +1360,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="brand">
-        <span class="brand-mark">PR</span>
-        <span>ProLine Reception</span>
+        <img src="logo.png" alt="ProLine Reception Logo" class="brand-logo">
       </div>
       <div class="footer-links">
         <a href="#how">How It Works</a>

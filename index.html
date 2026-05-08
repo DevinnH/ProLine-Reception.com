@@ -1341,16 +1341,16 @@
         <div class="cta-box reveal">
           <div class="section-kicker">Ready to stop leaking calls?</div>
           <h2>Get a professional AI call capture system built for your business.</h2>
-          <p>Send your information below and we will review your call flow, services, and setup needs. Replace this form action with your Google Form, GoHighLevel form, or CRM embed when ready.</p>
+          <p>Send your information below and we will review your call flow, services, and setup needs.</p>
 
-          <form class="form-card" onsubmit="handleForm(event)">
+          <form class="form-card" action="https://formspree.io/f/xwvyrpee" method="POST">
             <input type="text" name="name" placeholder="Your name" required>
             <input type="text" name="business" placeholder="Business name" required>
             <input type="email" name="email" placeholder="Email address" required>
             <input type="tel" name="phone" placeholder="Phone number" required>
             <textarea name="message" placeholder="What type of business do you run, and how are calls currently handled?"></textarea>
             <button class="btn btn-primary" type="submit">Request Setup Call</button>
-            <span class="form-note">This demo form opens your email app. Connect it to GHL or Google Forms before going live.</span>
+            <span class="form-note">Your information will be sent securely so we can review your call flow and setup needs.</span>
           </form>
         </div>
       </div>
@@ -1405,20 +1405,7 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    function handleForm(event) {
-      event.preventDefault();
-      const form = event.target;
-      const data = new FormData(form);
-      const subject = encodeURIComponent('ProLine Reception Setup Call Request');
-      const body = encodeURIComponent(
-        `Name: ${data.get('name')}\n` +
-        `Business: ${data.get('business')}\n` +
-        `Email: ${data.get('email')}\n` +
-        `Phone: ${data.get('phone')}\n\n` +
-        `Message:\n${data.get('message') || ''}`
-      );
-      window.location.href = `mailto:notifications@ai-bos.org?subject=${subject}&body=${body}`;
-    }
+    
   </script>
 </body>
 </html>

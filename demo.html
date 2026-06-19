@@ -345,7 +345,14 @@ src="https://www.facebook.com/tr?id=812527184991516&ev=PageView&noscript=1"
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#playlist">Watch Demo Playlist</a>
+          <a class="btn btn-primary"
+   href="#playlist"
+   onclick="
+      fbq('trackCustom','DemoPlaylistStarted');
+      gtag('event','demo_playlist_started');
+   ">
+   Watch Demo Playlist
+</a>
           <a class="btn btn-secondary" href="index.html#contact">Book A Live Demo</a>
         </div>
       </div>

@@ -1470,8 +1470,13 @@ form.addEventListener("submit", async function (event) {
     );
 
     if (response.ok) {
-      window.location.href = "https://proline-reception.com/thank-you.html";
-    } else {
+
+    fbq('track', 'Lead');
+
+    gtag('event', 'generate_lead');
+
+    window.location.href = "https://proline-reception.com/thank-you.html";
+} else {
       alert("There was a problem submitting the form.");
     }
   } catch (error) {

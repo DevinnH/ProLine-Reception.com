@@ -353,7 +353,14 @@ src="https://www.facebook.com/tr?id=812527184991516&ev=PageView&noscript=1"
    ">
    Watch Demo Playlist
 </a>
-          <a class="btn btn-secondary" href="index.html#contact">Book A Live Demo</a>
+          <a class="btn btn-secondary"
+   href="index.html#contact"
+   onclick="
+      fbq('trackCustom','DemoCTA_Click');
+      gtag('event','demo_cta_click');
+   ">
+   Book A Live Demo
+</a>
         </div>
       </div>
     </section>

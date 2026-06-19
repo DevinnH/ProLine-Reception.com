@@ -330,7 +330,14 @@ src="https://www.facebook.com/tr?id=812527184991516&ev=PageView&noscript=1"
         <a href="index.html#contact">Contact</a>
       </nav>
 
-      <a class="btn btn-primary" href="index.html#contact">Book Demo Call</a>
+      <a class="btn btn-primary"
+   href="index.html#contact"
+   onclick="
+      fbq('trackCustom','DemoCTA_Click');
+      gtag('event','demo_cta_click');
+   ">
+   Book Demo Call
+</a>
     </div>
   </header>
 

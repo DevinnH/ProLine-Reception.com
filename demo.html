@@ -3,26 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demo Library | ProLine Reception</title>
-  <meta name="description" content="Watch ProLine Reception AI receptionist demos for plumbing, HVAC, emergency transfer, and local service business call handling." />
+  <title>Demo Library | ProLine Reception AI Receptionist Demos</title>
+  <meta name="description" content="Watch ProLine Reception AI receptionist demos for plumbing, HVAC, emergency transfer, and Metro Atlanta local service business call handling." />
+  <link rel="canonical" href="https://proline-reception.com/demo.html" />
+
+  <meta property="og:title" content="Demo Library | ProLine Reception" />
+  <meta property="og:description" content="Hear realistic AI receptionist demos for local service businesses. See how ProLine Reception answers calls, captures leads, sends booking links, and routes urgent calls." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://proline-reception.com/demo.html" />
+  <meta property="og:site_name" content="ProLine Reception" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Demo Library | ProLine Reception" />
+  <meta name="twitter:description" content="Watch AI receptionist demos for Metro Atlanta service businesses." />
+
+  <meta name="facebook-domain-verification" content="t86aly6993z53eql1v8kaecn4axowz" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ProLine Reception",
+    "url": "https://proline-reception.com/",
+    "description": "ProLine Reception builds AI receptionist systems for Metro Atlanta service businesses, including 24/7 call answering, lead capture, owner notifications, booking links, emergency transfer rules, and follow-up automation.",
+    "areaServed": [
+      "Atlanta GA",
+      "Metro Atlanta",
+      "Conyers GA",
+      "Marietta GA",
+      "Decatur GA",
+      "Sandy Springs GA",
+      "Alpharetta GA",
+      "Roswell GA",
+      "Stone Mountain GA",
+      "Lawrenceville GA"
+    ],
+    "sameAs": [
+      "https://www.facebook.com/share/1AEbnJvLX6/",
+      "https://www.instagram.com/prolinereception"
+    ],
+    "serviceType": "AI receptionist and AI call answering systems for local service businesses"
+  }
+  </script>
 
   <style>
     :root {
       --bg: #070b12;
+      --bg-2: #0b1220;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-2: rgba(255, 255, 255, 0.09);
       --text: #f8fafc;
       --muted: #a8b3c7;
       --muted-2: #758299;
       --line: rgba(255, 255, 255, 0.12);
       --blue: #38bdf8;
       --blue-2: #2563eb;
-      --card: rgba(255, 255, 255, 0.06);
+      --green: #22c55e;
+      --red: #fb7185;
+      --gold: #fbbf24;
       --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
       --radius: 24px;
       --max: 1180px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -37,6 +81,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     .container {
       width: min(var(--max), calc(100% - 40px));
@@ -60,6 +105,15 @@
       gap: 24px;
     }
 
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.1rem;
+    }
+
     .brand-logo {
       height: 54px;
       width: auto;
@@ -77,10 +131,18 @@
 
     .nav-links a:hover { color: var(--text); }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 10px;
+      border: 1px solid transparent;
       border-radius: 999px;
       padding: 13px 20px;
       font-weight: 750;
@@ -102,18 +164,51 @@
     }
 
     .btn-secondary {
-      border: 1px solid var(--line);
+      border-color: var(--line);
       background: rgba(255, 255, 255, 0.04);
       color: var(--text);
     }
 
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 1.15rem;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      gap: 8px;
+      padding: 0 0 18px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-menu.open { display: grid; }
+
     .hero {
       padding: 96px 0 54px;
       text-align: center;
+      position: relative;
     }
 
     .eyebrow {
       display: inline-flex;
+      align-items: center;
+      gap: 10px;
       color: #c7e9ff;
       background: rgba(56, 189, 248, 0.11);
       border: 1px solid rgba(56, 189, 248, 0.24);
@@ -124,6 +219,14 @@
       margin-bottom: 24px;
     }
 
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.13);
+    }
+
     h1 {
       font-size: clamp(3rem, 7vw, 5.5rem);
       line-height: 0.95;
@@ -131,10 +234,17 @@
       margin-bottom: 24px;
     }
 
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #bfeeff 42%, #69b7ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
     .hero p {
       color: var(--muted);
       font-size: 1.18rem;
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto 30px;
     }
 
@@ -145,9 +255,7 @@
       flex-wrap: wrap;
     }
 
-    section {
-      padding: 72px 0;
-    }
+    section { padding: 72px 0; }
 
     .video-shell {
       background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.045));
@@ -155,6 +263,16 @@
       border-radius: 32px;
       padding: 18px;
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-shell::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(circle at 70% 0%, rgba(56, 189, 248, 0.18), transparent 32rem);
+      pointer-events: none;
     }
 
     .video-wrap {
@@ -164,6 +282,8 @@
       border-radius: 24px;
       overflow: hidden;
       background: #000;
+      border: 1px solid rgba(255,255,255,0.12);
+      z-index: 1;
     }
 
     .video-wrap iframe {
@@ -195,7 +315,8 @@
       margin-bottom: 16px;
     }
 
-    .section-head p {
+    .section-head p,
+    .split-copy p {
       color: var(--muted);
       font-size: 1.08rem;
     }
@@ -229,12 +350,62 @@
     .card h3 {
       font-size: 1.25rem;
       margin-bottom: 10px;
+      letter-spacing: -0.02em;
     }
 
     .card p {
       color: var(--muted);
       font-size: 0.98rem;
     }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .visual-card {
+      min-height: 100%;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.16), transparent 22rem),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .feature-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.13);
+      color: #86efac;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .feature-item strong { display: block; margin-bottom: 3px; }
+    .feature-item span { color: var(--muted); font-size: 0.93rem; }
 
     .cta-box {
       border-radius: 34px;
@@ -253,6 +424,13 @@
       margin-bottom: 28px;
     }
 
+    .cta-actions,
+    .social-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
     .footer {
       border-top: 1px solid var(--line);
       padding: 34px 0;
@@ -267,10 +445,32 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 900px) {
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
       .cards { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
+      .split { grid-template-columns: 1fr; }
+      .nav-links,
+      .nav-actions { display: none; }
       .brand-logo { height: 46px; }
+      .mobile-toggle { display: inline-flex; }
     }
 
     @media (max-width: 720px) {
@@ -279,106 +479,104 @@
       .hero { padding: 64px 0 36px; }
       section { padding: 54px 0; }
       .btn { width: 100%; }
-      .hero-actions { width: 100%; }
+      .hero-actions,
+      .cta-actions,
+      .social-links { width: 100%; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
     }
   </style>
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '812527184991516');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=812527184991516&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '812527184991516');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=812527184991516&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0Z09H695SQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0Z09H695SQ');
-</script> 
-  
-  <meta name="facebook-domain-verification" content="t86aly6993z53eql1v8kaecn4axowz" />
-
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Z09H695SQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0Z09H695SQ');
+  </script>
 </head>
 
 <body>
   <header class="nav">
-    <div class="container nav-inner">
-      <a href="index.html" aria-label="ProLine Reception home">
-        <img src="logo.png" alt="ProLine Reception Logo" class="brand-logo">
-      </a>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="brand" aria-label="ProLine Reception home">
+          <img src="logo.png" alt="ProLine Reception Logo" class="brand-logo">
+        </a>
 
-      <nav class="nav-links">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html#problem">Problem</a>
+          <a href="index.html#how">How It Works</a>
+          <a href="index.html#features">Features</a>
+          <a href="about.html">About</a>
+          <a href="demo.html">Demo Library</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#faq">FAQ</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="about.html">About Us</a>
+          <a class="btn btn-primary" href="index.html#contact" onclick="trackDemoCTA();">Book Demo Call</a>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+      </div>
+
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
         <a href="index.html#problem">Problem</a>
         <a href="index.html#how">How It Works</a>
-        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#features">Features</a>
+        <a href="about.html">About</a>
         <a href="demo.html">Demo Library</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact" onclick="trackDemoCTA();">Book Demo Call</a>
       </nav>
-
-      <a class="btn btn-primary"
-   href="index.html#contact"
-   onclick="
-      fbq('trackCustom','DemoCTA_Click');
-      gtag('event','demo_cta_click');
-   ">
-   Book Demo Call
-</a>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container">
-        <div class="eyebrow">ProLine Reception Demo Library</div>
-        <h1>Hear the AI receptionist in action.</h1>
+      <div class="container reveal">
+        <div class="eyebrow"><span class="pulse"></span> ProLine Reception Demo Library</div>
+        <h1>Hear the <span class="gradient-text">AI receptionist</span> in action.</h1>
         <p>
-          Listen to real demo calls showing how ProLine Reception answers, collects caller details,
-          identifies urgency, sends booking links, and supports local service businesses.
+          Watch realistic ProLine Reception demos showing how an AI receptionist answers calls, collects caller details,
+          identifies urgency, sends booking links, and supports Metro Atlanta service businesses without adding front desk staff.
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary"
-   href="#playlist"
-   onclick="
-      fbq('trackCustom','DemoPlaylistStarted');
-      gtag('event','demo_playlist_started');
-   ">
-   Watch Demo Playlist
-</a>
-          <a class="btn btn-secondary"
-   href="index.html#contact"
-   onclick="
-      fbq('trackCustom','DemoCTA_Click');
-      gtag('event','demo_cta_click');
-   ">
-   Book A Live Demo
-</a>
+          <a class="btn btn-primary" href="#playlist" onclick="trackPlaylistStart();">Watch Demo Playlist</a>
+          <a class="btn btn-secondary" href="index.html#contact" onclick="trackDemoCTA();">Book A Live Demo</a>
         </div>
       </div>
     </section>
 
     <section id="playlist">
-      <div class="container">
+      <div class="container reveal">
         <div class="video-shell">
           <div class="video-wrap">
             <iframe
               src="https://www.youtube.com/embed/videoseries?list=PLp23XkbwpAhlp5PD89H4dQiGB61PrNRK9"
-              title="ProLine Reception Demo Playlist"
+              title="ProLine Reception AI Receptionist Demo Playlist"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen>
             </iframe>
@@ -389,29 +587,29 @@ src="https://www.facebook.com/tr?id=812527184991516&ev=PageView&noscript=1"
 
     <section>
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div class="section-kicker">What to listen for</div>
           <h2>These demos show the system, not just the voice.</h2>
           <p>
-            The goal is not just to sound good. The system needs to collect useful information,
+            The goal is not only to sound natural. The system needs to collect useful information,
             identify next steps, and create a clean handoff for the business owner.
           </p>
         </div>
 
         <div class="cards">
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🔧</div>
             <h3>Plumbing Demo</h3>
             <p>See how the AI handles a normal service inquiry and captures the caller’s issue, urgency, and contact details.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">❄️</div>
             <h3>HVAC Demo</h3>
             <p>Listen to a realistic HVAC call where the AI keeps the conversation clear, professional, and focused.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🚨</div>
             <h3>Emergency Transfer Demo</h3>
             <p>Hear how urgent calls can be identified and routed so serious issues are not treated like normal leads.</p>
@@ -421,15 +619,65 @@ src="https://www.facebook.com/tr?id=812527184991516&ev=PageView&noscript=1"
     </section>
 
     <section>
+      <div class="container split">
+        <div class="visual-card reveal">
+          <div class="section-kicker">Metro Atlanta call coverage</div>
+          <h2>Built for service businesses that cannot afford to miss calls.</h2>
+          <p style="color: var(--muted); font-size: 1.08rem;">
+            ProLine Reception is designed for local companies across Metro Atlanta that rely on inbound calls for jobs,
+            estimates, emergency requests, appointments, and follow-up.
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="check">✓</span>
+              <div><strong>24/7 answering</strong><span>Capture callers after hours, on weekends, and during busy periods.</span></div>
+            </div>
+            <div class="feature-item">
+              <span class="check">✓</span>
+              <div><strong>Lead details captured</strong><span>Name, phone, service type, urgency, and call summary organized automatically.</span></div>
+            </div>
+            <div class="feature-item">
+              <span class="check">✓</span>
+              <div><strong>Owner notifications</strong><span>Send useful call summaries to the right person so the lead can be handled quickly.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card split-copy reveal">
+          <div class="icon">📍</div>
+          <h3>AI receptionist demos for Atlanta-area service businesses</h3>
+          <p>
+            If your business serves Atlanta, Conyers, Decatur, Marietta, Sandy Springs, Alpharetta, Roswell,
+            Lawrenceville, Stone Mountain, or the surrounding Metro Atlanta area, these demos show how call answering
+            can become part of your lead capture process.
+          </p>
+          <br>
+          <p>
+            The AI receptionist can be configured around your services, emergency rules, booking process, and preferred
+            notification method so callers get a professional experience while your team gets organized information.
+          </p>
+          <br>
+          <div class="social-links">
+            <a class="btn btn-secondary" href="https://www.facebook.com/share/1AEbnJvLX6/" target="_blank" rel="noopener" onclick="trackSocialClick('facebook');">Facebook</a>
+            <a class="btn btn-secondary" href="https://www.instagram.com/prolinereception" target="_blank" rel="noopener" onclick="trackSocialClick('instagram');">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <div class="container">
-        <div class="cta-box">
+        <div class="cta-box reveal">
           <div class="section-kicker">Ready to see it live?</div>
           <h2>Let’s walk through how this would work for your business.</h2>
           <p>
             Book a demo and we’ll review your services, call flow, emergency routing, booking process,
             and how ProLine Reception can be configured around your operation.
           </p>
-          <a class="btn btn-primary" href="index.html#contact">Book Demo Call</a>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="index.html#contact" onclick="trackDemoCTA();">Book Demo Call</a>
+            <a class="btn btn-secondary" href="about.html">About ProLine Reception</a>
+          </div>
         </div>
       </div>
     </section>
@@ -437,9 +685,75 @@ src="https://www.facebook.com/tr?id=812527184991516&ev=PageView&noscript=1"
 
   <footer class="footer">
     <div class="container footer-inner">
-      <img src="logo.png" alt="ProLine Reception Logo" class="brand-logo">
-      <span>© 2026 ProLine Reception. All rights reserved.</span>
+      <a href="index.html" class="brand" aria-label="ProLine Reception home">
+        <img src="logo.png" alt="ProLine Reception Logo" class="brand-logo">
+      </a>
+      <div class="footer-links">
+        <a href="index.html#how">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="demo.html">Demo Library</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <span>© <span id="year"></span> ProLine Reception. All rights reserved.</span>
     </div>
   </footer>
+
+  <script>
+    function trackDemoCTA() {
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', 'DemoCTA_Click');
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'demo_cta_click');
+      }
+    }
+
+    function trackPlaylistStart() {
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', 'DemoPlaylistStarted');
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'demo_playlist_started');
+      }
+    }
+
+    function trackSocialClick(platform) {
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', 'SocialClick', { platform: platform });
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'social_click', { platform: platform });
+      }
+    }
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+
+      document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+      });
+    }
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
